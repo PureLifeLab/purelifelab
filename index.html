@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,29 +39,89 @@
             font-size: 14px;
             color: #666;
         }
+        .lang-switch {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .lang-switch a {
+            margin: 0 10px;
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .lang-switch a.active {
+            font-weight: bold;
+            color: #222;
+        }
+        .lang-content {
+            display: none;
+        }
+        .lang-content.active {
+            display: block;
+        }
     </style>
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-switch a').forEach(el => el.classList.remove('active'));
+            document.getElementById(lang).classList.add('active');
+            document.querySelector(`.lang-switch a[data-lang="${lang}"]`).classList.add('active');
+        }
+    </script>
 </head>
 <body>
-    <h1>PureLifeLab</h1>
-    <p>Independent iOS Developer | Games & Utility Tools</p>
-
-    <h2>About</h2>
-    <p>We develop lightweight offline mobile applications, including casual puzzle games and daily utility tools. All apps are free and monetized via advertisements. No personal data collection.</p>
-
-    <h2>Our Applications</h2>
-    <div class="project">
-        <strong>Fruit Merge Puzzle</strong>
-        <p>Offline merge & match puzzle game. Ad-supported, no in-app purchases.</p>
-        <p>Privacy Policy: <a href="https://purelifelab.github.io/fruit-merge-privacy/privacy-policy.html" target="_blank">View Details</a></p>
+    <div class="lang-switch">
+        <a href="javascript:;" data-lang="cn" onclick="switchLang('cn')" class="active">中文</a>
+        <a href="javascript:;" data-lang="en" onclick="switchLang('en')">English</a>
     </div>
 
-    <div class="project">
-        <strong>Simple Utility Tools</strong>
-        <p>Lightweight offline productivity tools for daily use.</p>
+    <!-- 中文内容 -->
+    <div id="cn" class="lang-content active">
+        <h1>PureLifeLab</h1>
+        <p>独立iOS开发者 | 游戏 & 效率工具</p>
+
+        <h2>关于我们</h2>
+        <p>我们专注开发轻量化离线移动端应用，涵盖休闲益智游戏与日常效率工具。应用主要依靠广告变现，部分产品提供可选内购项目，全程不会收集用户个人数据。</p>
+
+        <h2>应用作品</h2>
+        <div class="project">
+            <strong>水果合并消除</strong>
+            <p>离线合成消除益智游戏，支持广告展示，同时提供去除广告等可选内购服务。</p>
+            <p>隐私政策：<a href="https://purelifelab.github.io/fruit-merge-privacy/privacy-policy.html" target="_blank">查看详情</a></p>
+        </div>
+
+        <div class="project">
+            <strong>简易效率工具</strong>
+            <p>面向日常使用的轻量化离线工具，部分高级功能支持可选内购解锁。</p>
+        </div>
+
+        <footer>
+            © 2026 PureLifeLab 保留所有权利
+        </footer>
     </div>
 
-    <footer>
-        © 2026 PureLifeLab. All Rights Reserved.
-    </footer>
+    <!-- 英文内容 -->
+    <div id="en" class="lang-content">
+        <h1>PureLifeLab</h1>
+        <p>Independent iOS Developer | Games & Utility Tools</p>
+
+        <h2>About</h2>
+        <p>We develop lightweight offline mobile applications, including casual puzzle games and daily utility tools. Our apps are mainly ad-supported. Optional in-app purchases are available in some products. We never collect any personal user data.</p>
+
+        <h2>Our Applications</h2>
+        <div class="project">
+            <strong>Fruit Merge Puzzle</strong>
+            <p>Offline merge & match puzzle game. It contains advertisements, and optional in-app purchases such as ad removal are provided.</p>
+            <p>Privacy Policy: <a href="https://purelifelab.github.io/fruit-merge-privacy/privacy-policy.html" target="_blank">View Details</a></p>
+        </div>
+
+        <div class="project">
+            <strong>Simple Utility Tools</strong>
+            <p>Lightweight offline productivity tools for daily use. Advanced features can be unlocked via optional in-app purchases.</p>
+        </div>
+
+        <footer>
+            © 2026 PureLifeLab. All Rights Reserved.
+        </footer>
+    </div>
 </body>
 </html>
